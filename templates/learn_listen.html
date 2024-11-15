@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fill The Blank Space</title>
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
 </head>
 <body>
     <div class="quiz-container">
@@ -41,16 +42,18 @@
             <!-- Listening Button -->
             <div class="soal">
                 <div class="hiasan">
-                    <img src="../../assets/conversation-question.svg" alt="gambar orang">
+                    <img src="{% static 'assets/conversation-question.svg' %}" alt="gambar orang">
                 </div>
                 <button class="listen-btn">
-                    <img src="../../assets/speaker-icon.svg" alt="Listen Icon">
+                    
+                    <img src="{% static 'assets/speaker-icon.svg' %}" alt="Listen Icon">
                     <span>Listen carefully...</span>
                 </button>
             </div>
 
             <!-- Add Audio Element -->
-            <audio id="audioElement" src="../../assets/The-Audio.mp3"></audio>
+            
+            <audio id="audioElement" src="{% static 'assets/The-Audio.mp3' %}"></audio>
 
             <!-- Question Text -->
             <div class="question-text listening">
@@ -100,7 +103,8 @@
                         <p class="report">Report</p>
                     </div>
                 </div>
-                <a href="home.html" class="btn continue" onclick="continueQuiz()">Finish</a>
+                
+                <a href="{% url 'home' %}" class="btn continue">Finish</a>
             </div>
         </div>      
     </div>
