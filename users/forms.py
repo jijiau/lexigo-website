@@ -5,10 +5,10 @@ from django.contrib.auth.forms import PasswordChangeForm
 from .models import Profile
 from django.contrib.auth.forms import UserCreationForm
 
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ["profile_picture"]
+# class ProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ["profile_picture"]
 
 class CustomUserForm(forms.ModelForm):
     class Meta:

@@ -4,9 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout,update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileForm, CustomUserForm, CustomPasswordChangeForm, CustomUserCreationForm
+from .forms import CustomUserForm, CustomPasswordChangeForm, CustomUserCreationForm
 from django.shortcuts import render, redirect
-from .forms import ProfileForm, CustomUserForm, CustomPasswordChangeForm
 from .models import Profile
 
 def signup_view(request):
@@ -66,14 +65,15 @@ def delete_account(request):
 def edit_profile_view(request):
     print("request:", request.method)
     profile, created = Profile.objects.get_or_create(user=request.user)
+    
     if request.method == 'POST':
-        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        # Hapus request.FILES dari ProfileForm
+        # profile_form = ProfileForm(request.POST, instance=profile)
         user_form = CustomUserForm(request.POST, instance=request.user)
         password_form = CustomPasswordChangeForm(user=request.user, data=request.POST)
-        
-        print(f"profile form:{profile_form}")
-        print(f"user form: {user_form}")
 
+        print(f"profile form: {profile_form}")
+        print(f"user form: {user_form}")
         print(f"profile valid: {profile_form.is_valid()} and user valid: {user_form.is_valid()}")
 
         if profile_form.is_valid() and user_form.is_valid():

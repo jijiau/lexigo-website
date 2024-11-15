@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     # Aplikasi Anda
     'users',
-    # 'users.apps.UsersConfig',
-    'storages',
 ]
 
 CSRF_COOKIE_SECURE = False
