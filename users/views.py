@@ -72,12 +72,11 @@ def edit_profile_view(request):
         user_form = CustomUserForm(request.POST, instance=request.user)
         password_form = CustomPasswordChangeForm(user=request.user, data=request.POST)
 
-        print(f"profile form: {profile_form}")
+        # print(f"profile form: {profile_form}")
         print(f"user form: {user_form}")
-        print(f"profile valid: {profile_form.is_valid()} and user valid: {user_form.is_valid()}")
+        print(f"user valid: {user_form.is_valid()}")
 
-        if profile_form.is_valid() and user_form.is_valid():
-            profile_form.save()
+        if user_form.is_valid():
             user_form.save()
             if password_form.is_valid():
                 user = password_form.save()
@@ -85,12 +84,11 @@ def edit_profile_view(request):
             messages.success(request, 'Your profile has been updated successfully.')
             return redirect('view_profile')
     else:
-        profile_form = ProfileForm(instance=profile)
+        # profile_form = ProfileForm(instance=profile)
         user_form = CustomUserForm(instance=request.user)
         password_form = CustomPasswordChangeForm(user=request.user)
 
     context = {
-        'profile_form': profile_form,
         'user_form': user_form,
         'password_form': password_form,
         'profile': profile
