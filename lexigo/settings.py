@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # Aplikasi Anda
     'users',
     # 'users.apps.UsersConfig',
+    'storages',
 ]
 
 CSRF_COOKIE_SECURE = False
